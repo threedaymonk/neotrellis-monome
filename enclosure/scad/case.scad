@@ -79,9 +79,9 @@ module buttons(h) {
 
 module screw_holes(r, h) {
   xs = [
-    screw_inset,
-    board_size - screw_inset,
-    board_size + screw_inset,
+    peg_length + min_wall,
+    board_size - peg_length - min_wall,
+    board_size + peg_length + min_wall,
     outer_width / 2 - screw_inset
   ];
   y = outer_height / 2 - screw_inset;
@@ -241,10 +241,11 @@ module lid_select_right() {
 }
 
 peg_dia = 1.9;
+peg_length = 10;
 
 module peg() {
   r = peg_dia / 2;
-  h = 10;
+  h = peg_length;
   translate([-h / 2, 0, 0]) {
     rotate([0, 90, 0]) cylinder(r = r, h = h);
   }
