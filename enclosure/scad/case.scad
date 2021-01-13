@@ -207,5 +207,5 @@ module base() {
   }
 }
 
-//lid();
 base();
+translate([0, 0, 100]) lid();
