@@ -217,6 +217,12 @@ module base_select_left() {
   mirror([1, 0, 0]) base_select_right();
 }
 
+module lid_select_right() {
+  f = 10;
+  translate([0, -(outer_height / 2) - f, -f])
+    cube([outer_width, outer_height + 2 * f, lid_depth + 2 * f]);
+}
+
 peg_dia = 1.9;
 
 module peg() {
@@ -235,6 +241,11 @@ module base_pegs_right() {
 
 module base_pegs_left() {
   mirror([1, 0, 0]) base_pegs_right();
+}
+
+module lid_pegs() {
+  translate([0, -outer_height / 2 + 5, lid_depth / 2]) peg();
+  translate([0, outer_height / 2 - 5, lid_depth / 2]) peg();
 }
 
 base();
