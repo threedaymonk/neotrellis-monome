@@ -207,5 +207,35 @@ module base() {
   }
 }
 
+module base_select_right() {
+  f = 10;
+  translate([board_size, -(outer_height / 2) - f, -f])
+    cube([outer_width, outer_height + 2 * f, base_depth + 2 * f]);
+}
+
+module base_select_left() {
+  mirror([1, 0, 0]) base_select_right();
+}
+
+peg_dia = 1.9;
+
+module peg() {
+  r = peg_dia / 2;
+  h = 10;
+  translate([-h / 2, 0, 0]) {
+    rotate([0, 90, 0]) cylinder(r = r, h = h);
+  }
+}
+
+module base_pegs_right() {
+  translate([board_size, -outer_height / 2 + 5, base_depth / 2]) peg();
+  translate([board_size, outer_height / 2 - 5, base_depth / 2]) peg();
+  translate([board_size, 0, 4]) peg();
+}
+
+module base_pegs_left() {
+  mirror([1, 0, 0]) base_pegs_right();
+}
+
 base();
 translate([0, 0, 100]) lid();
