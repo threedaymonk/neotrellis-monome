@@ -1,11 +1,11 @@
-SOURCES = $(wildcard *.scad)
+SOURCES = $(wildcard base-*.scad) $(wildcard lid-*.scad)
 OUTPUTS = $(patsubst %.scad,%.stl,$(SOURCES))
 
 .PHONY: all clean
 
 all: $(OUTPUTS)
 
-%.stl: %.scad
+%.stl: %.scad case.scad
 	openscad -o $@ $<
 
 clean:
