@@ -17,10 +17,10 @@ lid_depth = 7;
 min_z = layer * 4;
 min_wall = 0.8;
 
-screw_inset = (outer_width - inner_width) / 4;
 screw_thread_diameter = 2.9;
 screw_shaft_diameter = 3.2;
 screw_cap_diameter = 6;
+screw_inset = radius + screw_cap_diameter / 2;
 
 button_size = 11;
 button_r = 2;
@@ -36,7 +36,7 @@ connector_depth = 6.5;
 base_depth = min_z + board_thickness +  connector_depth;
 normal_thickness = 2;
 
-screw_cap_depth = base_depth - board_thickness;
+screw_cap_depth = base_depth - board_thickness - 1;
 
 module round_rect(x, y, h, r) {
   xpos = x / 2 - r;
