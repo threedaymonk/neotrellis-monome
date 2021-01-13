@@ -151,6 +151,7 @@ module teensy() {
 }
 
 module board() {
+  slack = 0.5;
   margin = 3;
   lead_depth = 2;
   lead_width = 15;
@@ -160,8 +161,8 @@ module board() {
   plug_h = 10;
   translate([-inner_width / 2, -inner_height / 2, 0]) {
     // pcb
-    translate([0, 0, base_depth - board_thickness])
-      cube([inner_width, inner_height, base_depth]);
+    translate([-slack, -slack, base_depth - board_thickness])
+      cube([inner_width + 2 * slack, inner_height + 2 * slack, base_depth]);
     for (col = [0:board_cols - 1]) {
       // horizontal connection channels
       translate([
