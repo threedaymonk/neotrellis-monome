@@ -34,7 +34,6 @@ board_thickness = 3;
 connector_depth = 6.5;
 
 base_depth = min_z + board_thickness +  connector_depth;
-echo(base_depth);
 normal_thickness = 2;
 
 screw_cap_depth = base_depth - board_thickness;
