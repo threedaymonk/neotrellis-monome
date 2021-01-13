@@ -129,6 +129,22 @@ module usb_cutout() {
     cylinder(r = screw_dia / 2, h = base_depth);
 }
 
+module feet() {
+  foot_depth = 1;
+  foot_dia = 10;
+  foot_inset_x = 4;
+  foot_inset_y = 10;
+
+  for (xk = [-1, 0, 1])
+    for (yk = [-1, 1])
+      translate([
+        xk * (outer_width / 2 - foot_inset_x - foot_dia / 2),
+        yk * (outer_height / 2 - foot_inset_y - foot_dia / 2),
+        -$e
+      ]) cylinder(r = foot_dia / 2, h = foot_depth + $e);
+}
+
+
 module teensy() {
   width = 18;
   length = 37;
@@ -204,6 +220,7 @@ module base() {
       usb_cutout();
     translate([-inner_width / 2 + 15, 39, min_z])
       teensy();
+    feet();
   }
 }
 
