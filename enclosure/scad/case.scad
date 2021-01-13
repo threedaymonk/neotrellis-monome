@@ -22,17 +22,6 @@ screw_thread_diameter = 2.9;
 screw_shaft_diameter = 3.2;
 screw_cap_diameter = 6;
 
-screw_positions = [
-  [-(outer_width / 2) + screw_inset, -(outer_height / 2) + screw_inset],
-  [-(outer_width * 1/6), -(outer_height / 2) + screw_inset],
-  [(outer_width * 1/6), -(outer_height / 2) + screw_inset],
-  [(outer_width / 2) - screw_inset, -(outer_height / 2) + screw_inset],
-  [-(outer_width / 2) + screw_inset, (outer_height / 2) - screw_inset],
-  [-(outer_width * 1/6), (outer_height / 2) - screw_inset],
-  [(outer_width * 1/6), (outer_height / 2) - screw_inset],
-  [(outer_width / 2) - screw_inset, (outer_height / 2) - screw_inset]
-];
-
 button_size = 11;
 button_r = 2;
 button_pitch = 15;
@@ -90,12 +79,18 @@ module buttons(h) {
 }
 
 module screw_holes(r, h) {
-  for (pos = screw_positions) {
-    x = pos[0];
-    y = pos[1];
-    translate([x, y, 0])
-      cylinder(r = r, h = h);
-  }
+  xs = [
+    outer_width * 1/6,
+    outer_width / 2 - screw_inset
+  ];
+  y = outer_height / 2 - screw_inset;
+
+  for (m = [[0, 0, 0], [1, 0, 0]])
+    for (n = [[0, 0, 0], [0, 1, 0]])
+      mirror(m)
+        mirror(n)
+          for (x = xs)
+            translate([x, y, 0]) cylinder(r = r, h = h);
 }
 
 module lid() {
