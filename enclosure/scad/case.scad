@@ -147,7 +147,7 @@ module feet() {
 
 module teensy() {
   width = 18;
-  length = 37;
+  length = 40;
   cube([length, width, base_depth]);
 }
 
