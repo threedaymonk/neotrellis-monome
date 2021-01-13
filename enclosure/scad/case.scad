@@ -80,7 +80,9 @@ module buttons(h) {
 
 module screw_holes(r, h) {
   xs = [
-    outer_width * 1/6,
+    screw_inset,
+    board_size - screw_inset,
+    board_size + screw_inset,
     outer_width / 2 - screw_inset
   ];
   y = outer_height / 2 - screw_inset;
