@@ -1,4 +1,4 @@
-OUTPUTS = base-left.sts base-middle.stl base-right.stl lid-half.stl
+OUTPUTS = base-left.stl base-middle.stl base-right.stl lid-half.stl
 
 .PHONY: all clean
 
