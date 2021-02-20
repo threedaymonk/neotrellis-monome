@@ -30,7 +30,7 @@ button_pitch = 15;
 button_cols = 4 * board_cols;
 button_rows = 4 * board_rows;
 
-board_thickness = 3;
+board_thickness = 3.6;
 connector_depth = 6.5;
 
 base_depth = min_z + board_thickness +  connector_depth;
